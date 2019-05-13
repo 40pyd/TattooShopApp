@@ -1,0 +1,123 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.ApplicationUserViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig" style="color:black;">
+             
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" id="mapBtn" data-parent="#accordion" href="#faq1"><strong>FIND ON THE MAP</strong></a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div id="faq1" class="panel-collapse collapse">
+                        <div id="canvas"></div>
+                    </div>
+                </div>
+             
+            <div class="box white main-boxshadow" id="contact">
+                <h1>Contact</h1>
+
+                <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
+                <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
+
+            </div>
+
+            <div class="box white main-boxshadow" id="contact">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3><i class="fa fa-map-marker"></i> Address</h3>
+                        <p>
+                            14 Podval
+                            <br>Podvalna str
+                            <br>Brovary dist
+                            <br>Kyiv
+                            <br>
+                            <strong>Ukraine</strong>
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h3><i class="fa fa-phone"></i> Call center</h3>
+                        <p class="text-muted">This number is toll free if calling from Ukraine otherwise we advise you to use the electronic form of communication.</p>
+                        <p>
+                            <strong>+38 (066)5555555</strong>
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h3><i class="fa fa-envelope"></i> Electronic support</h3>
+                        <p class="text-muted">Please feel free to write an email to us.</p>
+                        <ul>
+                            <li>
+                                <strong><a href="mailto:40pyd@gmail.com">40pyd@gmail.com</a></strong>
+                            </li>
+                            <li><strong><a href="mailto:40pyd@ukr.net">40pyd@ukr.net</a></strong></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="box  white main-boxshadow" id="contact">
+                <h2>Contact form</h2>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="Birthday" class="control-label"></label>
+                            <input asp-for="Birthday" class="form-control" />
+                            <span asp-validation-for="Birthday" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group text-center">
+                            <div id="upload_button">
+                                <label>
+                                    <input name="Image" type="file" class="form-control">
+                                    <span class="btn btn-primary">Add your photo</span>
+                                </label>
+                            </div>
+                            <a class="btn btn-success">Send Message</a>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-danger">Back to shop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="col-md-2"></div>
+            </div>
+</div>
+

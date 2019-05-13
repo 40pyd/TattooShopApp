@@ -1,0 +1,208 @@
+﻿
+@model _2ScullTattooShop.Models.ViewModels.BasketViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Your Basket</h2>
+    <div id="all">
+
+        <div id="content">
+
+            <div class="container">
+
+                <div class="col-md-9" id="basket">
+
+                    <div class="box white main-boxshadow">
+                            <h1>Shopping cart</h1>
+                            <p class="text-muted">You currently have @Model.Basket.Items.Count() item(s) in your cart.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-centr">Product</th>
+                                            <th class="text-centr">Price</th>
+                                            <th class="text-centr">Quantity</th>
+                                            <th class="text-right">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Basket.Items)
+                                        {
+                                            <tr>
+                                                <td class="text-center">@item.Product.Name</td>
+                                                <td class="text-center">@item.Product.Price.ToString()</td>
+                                                <td class="text-center">@item.Quantity</td>
+                                                <td class="text-center">@((item.Quantity * item.Product.Price).ToString()) $</td>
+                                                <td class="text-center" from basket>
+                                                    <form asp-action="RemoveFromBasket" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                                        <input type="hidden" name="Id" value="@item.Product.Id" />
+                                                        <button type="submit" class="btn btn-xs btn-danger">Remove</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3" class="text-right">Total:</td>
+                                            <td class="text-right">
+                                                @Model.Basket.ComputeTotalValue().ToString() $
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    @if (!String.IsNullOrEmpty(@Model.ReturnUrl))
+                                    {
+                                        <a class="btn btn-primary" href="@Model.ReturnUrl"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary" asp-controller="Products" asp-action="List"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+                                    }
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn btn-primary" asp-action="Clear" asp-controller="Order" asp-route-returnUrl="@Model.ReturnUrl"><i class="fa fa-refresh"></i> Clear basket</a>
+                                    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">Checkout<i class="fa fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row same-height-row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="box white same-height main-boxshadow text-center">
+                                <h3>You may also like these tattoos</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height main-boxshadow">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a><img src="~/images/Tattoos/images (12).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                        <div class="back">
+                                            <a><img src="~/images/Tattoos/images (12).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="invisible"><img src="~/images/Tattoos/images (12).jpg" alt="" class="img-responsive img-rounded"></a>
+                                <div class="text">
+                                    <h3>Print</h3>
+                                    <p class="price">$3400</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height main-boxshadow">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a><img src="~/images/Tattoos/images (11).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                        <div class="back">
+                                            <a><img src="~/images/Tattoos/images (11).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible"><img src="~/images/Tattoos/images (11).jpg" alt="" class="img-responsive img-rounded"></a>
+                                <div class="text">
+                                    <h3>Leaves</h3>
+                                    <p class="price">$2000</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height main-boxshadow">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a><img src="~/images/Tattoos/images (16).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                        <div class="back">
+                                            <a><img src="~/images/Tattoos/images (16).jpg" alt="" class="img-responsive img-rounded"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="invisible"><img src="~/images/Tattoos/images (16).jpg" alt="" class="img-responsive img-rounded"></a>
+                                <div class="text">
+                                    <h3>Rose</h3>
+                                    <p class="price">$790</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="box white main-boxshadow" id="order-summary">
+                        <div class="box-header text-center">
+                            <h3>Order summary</h3>
+                        </div>
+                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+         
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Order subtotal</td>
+                                        <th>$@Model.Basket.ComputeTotalValue().ToString()</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping and handling</td>
+                                        <th>$0.00</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax</td>
+                                        <th>$0.00</th>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Total</td>
+                                        <th>$@Model.Basket.ComputeTotalValue().ToString()</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box white main-boxshadow">
+                        <div class="box-header text-center">
+                            <h4>Coupon code</h4>
+                        </div>
+                        <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-gift"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

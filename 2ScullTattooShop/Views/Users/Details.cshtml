@@ -1,0 +1,65 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.ApplicationUserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="col-md-2">
+                <h3 style="color:dimgrey;">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) </h3>
+                <hr />
+                <div class="box white main-boxshadow" id="details">
+                    <div class="social">
+                        <h4>Find in socials</h4>
+                        <p>
+                            <a href="https://uk-ua.facebook.com" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                            <a href="https://twitter.com/?lang=ru" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row " id="productMain">
+                    <div class="col-sm-6">
+
+                        @if (ViewBag.Image != null)
+                        {
+                            <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-circle center-block">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                        }
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                           
+                                <h1 class="text-center">@Model.FirstName</h1>
+                                <h4 class="text-center">@Model.Birthday.ToShortDateString()</h4>
+                                <h4 class="text-center">@Model.Email</h4>
+                          
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    @if (ViewBag.IsAdmin)
+                    {
+                        <a asp-action="Edit" class="btn btn-warning btn-lg" asp-route-id="@Model.Id">Edit</a>
+                    }
+                    <a asp-action="List" class="btn btn-primary btn-lg">Back to List</a>
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,25 @@
+﻿
+@model IEnumerable<string>
+
+<a class="btn btn-block btn-primary"
+   asp-action="List"
+   asp-route-category="@ViewBag.CurrentCategory"
+   asp-route-sort="@ViewBag.SortBy"
+   asp-controller="Products"
+   asp-route-page="1">
+    All
+</a>
+
+@foreach (var brand in Model)
+{
+    <a class="btn btn-block @(brand==ViewBag.CurrentBrand ? "btn-warning" :  "btn-primary")"
+       asp-action="List"
+       asp-controller="Products"
+       asp-route-category="@ViewBag.CurrentCategory"
+       asp-route-brand="@brand"
+       asp-route-sort="@ViewBag.SortBy"
+       asp-route-page="1">
+        @brand
+    </a>
+}
+

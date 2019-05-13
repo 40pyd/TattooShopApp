@@ -1,0 +1,43 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.AddressViewModel
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+            <h2>Input adress</h2>
+            <form asp-action="CreateAddress" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="AddressLine" class="control-label"></label>
+                    <input asp-for="AddressLine" class="form-control" />
+                    <span asp-validation-for="AddressLine" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContactName" class="control-label"></label>
+                    <input asp-for="ContactName" class="form-control" />
+                    <span asp-validation-for="ContactName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Country
+                        <a class="btn btn-warning btn-xs" asp-area="" asp-controller="Cart" asp-action="CreateCountry">Add new Country</a>
+                    </label>
+                    <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId">
+                        <option selected="selected" disabled="disabled">select the country</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a asp-action="List" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

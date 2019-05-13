@@ -1,0 +1,173 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.ProductListViewModel
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "_Layout";
+}
+
+@if (ViewBag.IsAdmin)
+{
+<div id="advantages">
+    <div class="container">
+        <div class="same-height-row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="box same-height clickable">
+                    <div class="icon">
+                        <i class="fa fa-th-list"></i>
+                    </div>
+                    <h3><a asp-area="" asp-action="Create">Add new product</a></h3>
+                    <p>Add new product to shop database</p>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+}
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-3 col-sm-4">
+                    <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                        <h3>Categories</h3>
+                        <div id="categories">
+                            @await Component.InvokeAsync("Category")
+                        </div>
+                    </div>
+                    <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                        <h3>Brands</h3>
+                        <div id="brands">
+                            @await Component.InvokeAsync("Brand")
+                        </div>
+                    </div>
+                </div>
+
+                    @if (Model.Products.Count() <= 0)
+                    {
+                        <div class="col-md-9 col-sm-8">
+                            <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+
+                                <h1>Sorry</h1>
+                                <h2>There are no products in this category</h2>
+                                <a asp-action="List" class="btn btn-lg btn-group-vertical">Continue shoping</a>
+
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Products.Count() > 0)
+                    {
+
+                        <div class="col-md-9 col-sm-8">
+                            <div id="showing" class="box info-bar main-boxshadow" data-animate="fadeInDown">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-4 products-showing">
+                                        Showing <strong>@ViewBag.ShowingCount</strong> of <strong>@ViewBag.TotalCount</strong> products
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-8  products-number-sort">
+                                        <div class="row">
+                                            <form class="form-inline">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="products-number">
+                                                        <strong>Show</strong>
+                                                        <a asp-action="List" asp-route-category="@Model.CurrentCategory" asp-route-brand="@Model.CurrentBrand" asp-route-PageSize="12" class="btn btn-primary btn-sm">12</a>
+                                                        <a asp-action="List" asp-route-category="@Model.CurrentCategory" asp-route-brand="@Model.CurrentBrand" asp-route-PageSize="24" class="btn btn-primary btn-sm">24</a>
+                                                        <a asp-action="List" asp-route-category="@Model.CurrentCategory" asp-route-brand="@Model.CurrentBrand" asp-route-PageSize="36" class="btn btn-primary btn-sm">36</a> products
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="products-sort-by">
+                                                        <strong>Sort by</strong>
+                                                        <a asp-action="List" asp-route-category="@Model.CurrentCategory" asp-route-brand="@Model.CurrentBrand" asp-route-sort="1" class="btn btn-primary btn-sm">sort by name</a>
+                                                        <a asp-action="List" asp-route-category="@Model.CurrentCategory" asp-route-brand="@Model.CurrentBrand" asp-route-sort="2" class="btn btn-primary btn-sm">sort by price</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row products">
+                                @foreach (var item in Model.Products)
+                                {
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="product main-boxshadow" data-animate="fadeInUp">
+                                            <div class="flip-container">
+                                                <div class="flipper">
+                                                    <div class="front">
+                                                        @if (@item.Image != null)
+                                                        {
+                                                            <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-responsive center-block">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                                        }
+                                                    </div>
+                                                    <div class="back">
+                                                        @if (@item.Image != null)
+                                                        {
+                                                            <a asp-action="Details" asp-route-id="@item.Id">
+                                                                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-responsive center-block">
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="invisible">
+                                                @if (@item.Image != null)
+                                                {
+                                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-responsive">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                                }
+                                            </a>
+                                            <div class="text">
+                                                <h3><strong><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></strong></h3>
+                                                <p class="price">$ @item.Price.ToString()</p>
+                                                <p class="buttons">
+                                                    @if (ViewBag.IsAdmin)
+                                                    {
+                                                        <a class="btn btn-primary btn-small" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                                        <a class="btn btn-danger btn-small" asp-action="Delete" asp-controller="Products" asp-route-id="@item.Id">Delete</a>
+                                                    }
+                                                    @using (Html.BeginForm("AddToBasket", "Cart"))
+                                                    {
+                                                        <input type="hidden" name="itemId" value="@item.Id" />
+                                                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                                                        <div class="text-center">
+                                                            <a class="btn btn-info btn-small" asp-action="Details" asp-route-id="@item.Id">View detail</a>
+                                                            <button style="margin:5px;" class="btn btn-success btn-small" type="submit"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                        </div>
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+                    <div page-model="@Model.PageViewModel" page-action="List" page-classes-enable="true"
+                         page-class="btn" page-class-normal="btn-default"
+                         page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory" page-url-brand="@Model.CurrentBrand" class="btn-group pull-right">
+                    </div>
+                </div>
+
+                </div>
+    </div>
+

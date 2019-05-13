@@ -1,0 +1,32 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+            <h2 class="text-center">Create and add new category</h2>
+
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a asp-action="List" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+
+

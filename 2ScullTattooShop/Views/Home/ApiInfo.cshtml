@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewData["Title"] = "ApiInfo";
+}
+
+<div id="all">
+
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-3">
+                <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">2Sculls API</h3>
+                        </div>
+                        <div class="product" style="margin:0;">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a><img src="~/images/Logos/api.png" alt="" class="img-responsive center-block"></a>
+                                    </div>
+                                    <div class="back">
+                                        <a><img src="~/images/Logos/api.png" alt="" class="img-responsive center-block"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="invisible"><img src="~/images/Logos/api.png" alt="" class="img-responsive center-block"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+                <div class="box white" id="contact">
+                    <h1>What is 2Sculls API</h1>
+
+                    <p class="lead">The 2Sculls API is a RESTful service which provides methods for accessing specific resources at canonical URLs and for searching and filtering sets of resources by various criteria. All representations are encoded as JSON objects.</p>
+                    <p>The 2Sculls API is based on bearer tokens authentication</p>
+
+                    <hr>
+
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#faq1">Resources</a>
+                                </h4>
+                            </div>
+                            <div id="faq1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>You can access six resource types using the API:</p>
+                                    <ul>
+                                        <li><strong>Products:</strong> there are many products in different categories including clothes, accessories, shoes</li>
+                                        <li><strong>Brands:</strong> you can get all the brands represented on 2ScullsShop, add current information or even add the needed brand to shop</li>
+                                        <li><strong>Categories:</strong> are used to group products on 2ScullsShop, if you find some mistakes you can easily fix them</li>
+                                        <li><strong>Tattoos:</strong> get all the tattoos of 2ScullsTattooStudio with current prices and authors. You have the tattoo idea - add it to our database</li>
+                                        <li><strong>Authors:</strong> all our tattoo masters information will be reachable for your use</li>
+                                        <li><strong>Styles:</strong> allowes to access all worldwide known styles of tattoo art</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Authentication</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    All requests to the APIs must be authenticated using the methods outlined in the request signing and authentication guidelines. Requests which fail authentication generally pass a 401 HTTP code and an error describing the reason for rejection.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">HTTP Verbs</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>All endpoints currently accept such requests.</p>
+                                    <ul>
+                                        <li><strong>HTTP GET:</strong> allowes to get the information of desired entity or all entities of that type</li>
+                                        <li><strong>HTTP POST:</strong> used to update the chosen entity information (administrative role required) </li>
+                                        <li><strong>HTTP PUT:</strong> you can add new entity to our apps database if it will be valid for the shop</li>
+                                        <li><strong>HTTP DELETE:</strong> remove any unneeded entities (you have to get administrative access)</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Step 1</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Sign in the 2ScullsTattooStudioShop using your existing email and secret password
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Step 2</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Get the authentication token based on your sign in information
+                                    <hr />
+                                    Initial <strong>request:</strong>
+                                    <pre>Request Url: https://host/token <br />Request Method: GET<br />Params: {<br />&emsp;"email": "~your registration email~",<br />&emsp;"password": "~your registration password~"</pre><hr />
+                                    <p>in the <strong>response</strong> you will get a authetication token like:</p>
+                                    <pre>"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.wiaXNzIjoxvY2o0NDM3Mi8ifQ.yA0i3hEmpPuEYD5W2RkBDSEW88K_hOIRMY9-wbhJDwg"</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Step 3</a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Make one of the requests to access operations with app entities using the token you've got
+                                    <hr />
+                                    <p>!!! make sure your token is not out of it's <strong>LIFETIME</strong> (30 days from generation date) !!!</p>
+                                    <p>!!! make sure your request sends data in <strong>JSON</strong> format !!!</p>
+                                    <p><strong>API request:</strong></p>
+                                    <strong>BODY:</strong><br />
+                                    <pre>Request Url: https://host//2ScullTattooStudioShop/Products <br />Request Method: PUT<br />Params: {<br />&emsp;"name":"newproduct",<br />&emsp;"price":1000,<br />&emsp;"categoryId":100,<br />&emsp;"brandId":100</pre>
+                                    <strong>HEADERS:</strong><br />
+                                    <pre><strong>Content-Type</strong> application/json <br /><strong>Authorization</strong> Bearer ~your token~<br />Other headers are temporary<br /></pre><hr />
+                                    <p>in the response you will get a:</p>
+                                    <pre>STATUS 200 OK</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">API Request Examples</a>
+                                </h4>
+                            </div>
+                            <div id="collapseSeven" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Here are all requests of 2ScullAPI<br />
+                                    Change "Products" to any entity of app like Tattoos, Authors, Styles, Categories or Brands
+                                    <hr />
+                                    <pre><table class="table-bordered table-hover table-condensed table-striped" style="width:100%; text-align:center">
+                                    <thead>
+                                    <tr>
+                                    <th class="text-center">Method</th>
+                                    <th class="text-center">Request</th>
+                                    <th class="text-center">Response</th>
+                                    <th class="text-center">Access</th>
+                                            </tr>
+                                            </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td>GET</td>
+                                    <td>https://host//2ScullTattooStudioShop/Products</td>
+                                    <td>all products</td>
+                                    <td>all</td>
+                                            </tr>
+                                    <tr>
+                                    <td>GET</td>
+                                    <td>https://host//2ScullTattooStudioShop/Products/{id}</td>
+                                    <td>product with id</td>
+                                    <td>all</td>
+                                            </tr>
+                                    <tr>
+                                    <td>POST</td>
+                                    <td>https://host//2ScullTattooStudioShop/Products</td>
+                                    <td>update product from body</td>
+                                    <td>admin</td>
+                                            </tr>
+                                    <tr>
+                                    <td>PUT</td>
+                                    <td>https://host//2ScullTattooStudioShop/Products</td>
+                                    <td>create new product from body</td>
+                                    <td>admin</td>
+                                            </tr>
+                                    <tr>
+                                    <td>DELETE</td>
+                                    <td>https://host//2ScullTattooStudioShop/Products/{id}</td>
+                                    <td>remove product with id</td>
+                                    <td>admin</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

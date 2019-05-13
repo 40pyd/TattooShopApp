@@ -1,0 +1,64 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.BrandViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-4">
+                <div id="sorry-background" class="box main-boxshadow text-center" data-animate="fadeInLeftBig">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                    </dl>
+                    <div class="text-center">
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id">Edit</a>
+                        <a asp-action="List" class="btn btn-primary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="row" id="productMain">
+                    <div class="col-sm-7" data-animate="fadeInUpBig">
+
+                        @if (ViewBag.Image != null)
+                        {
+                            <div class="main-boxshadow" id="mainImage" style="background-color:white;">
+                                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-responsive center-block">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                        }
+
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="box white main-boxshadow " id="details" data-animate="fadeInRightBig">
+                            <div class="social">
+                                <h4>Show it to your friends</h4>
+                                <p>
+                                    <a href="https://uk-ua.facebook.com" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                    <a href="https://twitter.com/?lang=ru" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+

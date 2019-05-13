@@ -1,0 +1,23 @@
+﻿@model IEnumerable<string>
+
+<a class="btn btn-block btn-primary"
+   asp-action="List"
+   asp-controller="Tattoos"
+   asp-route-style="@ViewBag.CurrentStyle"
+   asp-route-sort="@ViewBag.SortBy"
+   asp-route-page="1">
+    All authors
+</a>
+
+@foreach (var author in Model)
+{
+    <a class="btn btn-block @(author==ViewBag.CurrentAuthor ? "btn-warning" :  "btn-primary")"
+       asp-action="List"
+       asp-controller="Tattoos"
+       asp-route-style="@ViewBag.CurrentStyle"
+       asp-route-sort="@ViewBag.SortBy"
+       asp-route-author="@author"
+       asp-route-page="1">
+        @author
+    </a>
+}

@@ -1,0 +1,92 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.TattooViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-12">
+                <div class="row" id="productMain">
+                    <div class="col-sm-6">
+                        @if (ViewBag.Image != null)
+                        {
+                            <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-responsive img-rounded center-block">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="showing" class="box main-boxshadow" data-animate="fadeInRightBig">
+                            <h1 class="text-center">@Model.Name tattoo</h1>
+                            <dl class="text-center">
+                                <dt>
+                                    @Html.DisplayFor(model => model.Name)
+                                </dt>
+                                <dt>
+                                    $ @Html.DisplayFor(model => model.Price)
+                                </dt>
+                                <dt>
+                                    Style @Html.DisplayFor(model => model.StyleName)
+                                </dt>
+                                <dt>
+                                    Author @Html.DisplayFor(model => model.AuthorName)
+                                </dt>
+                            </dl>
+                        </div>
+
+                        <div class="row" id="thumbs" data-animate="fadeInUpBig">
+                            <div class="col-xs-4">
+                                <a class="thumb main-boxshadow">
+                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-responsive img-rounded">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="thumb main-boxshadow">
+                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-responsive img-rounded">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="thumb main-boxshadow">
+                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" alt="" class="img-responsive img-rounded">
+                                </a>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="box white main-boxshadow" id="details">
+                                        <div class="social">
+                                            <h4>Show it to your friends</h4>
+                                            <p>
+                                                <a href="https://uk-ua.facebook.com" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                                <a href="https://www.instagram.com" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                                <a href="https://twitter.com/?lang=ru" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+            <div class="text-center">
+                @if (ViewBag.IsAdmin)
+                {
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.TattooId">Edit</a>
+                }
+                    <a asp-action="List" class="btn btn-primary">Back to List</a>
+                </div>
+                </div>
+
+            </div>
+        </div>

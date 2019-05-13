@@ -1,0 +1,35 @@
+﻿
+@model _2ScullTattooShop.Models.ViewModels.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div id="sorry-background" class="box main-boxshadow text-center" data-animate="fadeInUpBig">
+                    <h2>Details of the category</h2>
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                    </dl>
+                    <div class="text-center">
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id">Edit</a>
+                        <a asp-action="List" class="btn btn-primary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        </div>
+    </div>
+
+
+

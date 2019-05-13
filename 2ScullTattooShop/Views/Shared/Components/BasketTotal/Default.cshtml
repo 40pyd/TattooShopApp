@@ -1,0 +1,14 @@
+﻿@model _2ScullTattooShop.Models.BasketModels.Basket
+
+    @if (Model.Items.Count() > 0)
+    {
+        <small class="navbar-text">
+            <b>Your basket:</b>
+            @Model.Items.Sum(x => x.Quantity) item(s)
+            @Model.ComputeTotalValue().ToString() $
+        </small>
+    }
+    <a class="btn btn-primary navbar-btn" asp-controller="Cart"
+       asp-action="Index" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-shopping-cart"></i>
+    </a>

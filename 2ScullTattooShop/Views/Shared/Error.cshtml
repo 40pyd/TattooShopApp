@@ -1,0 +1,26 @@
+﻿@model String
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+
+                    <h1>Sorry</h1>
+                    <h2>@Model</h2>
+                    <a asp-action="List" class="btn btn-lg btn-group-vertical"><i class="fa fa-home"></i>Back to List</a>
+
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+</div>
+
+

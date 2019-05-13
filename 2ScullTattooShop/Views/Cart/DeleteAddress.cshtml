@@ -1,0 +1,26 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.AddressViewModel
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                        <h2>Delete the address</h2>
+                        <hr />
+                        <h3 style="color:red;">Are you sure you want to delete <span style="color:white;">@Model.AddressLine</span> address?</h3>
+                        <div>
+                            <hr />
+                            <form asp-action="DeleteAddress">
+                                <input type="hidden" asp-for="AddressId" />
+                                <input type="submit" value="Delete the address" class="btn btn-danger" />
+                                <a asp-action="Index" class="btn btn-primary">Back</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>

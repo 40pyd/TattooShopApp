@@ -1,0 +1,91 @@
+﻿body {
+    background-image: url("../images/back.jpg") !important;
+    background-repeat: repeat !important;
+}
+
+#upload_button {
+    display: inline-block;
+}
+
+#upload_button input[type=file] {
+    display: none;
+}
+
+#logoutForm ul li :hover {
+    background-color: #4fbfa8 !important;
+    border-radius:5px;
+    color:white;
+}
+
+#showing{
+    background-color:black;
+    color:white;
+}
+
+#mapBtn{
+    font-size:30px!important;
+}
+
+#canvas {
+    height: 600px;
+}
+
+.btn-link {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+#logIn-custom ul li :hover {
+    background-color: #4fbfa8 !important;
+    border-radius: 5px;
+    color: white!important;
+}
+
+.front {
+    text-align: center !important;
+    margin: auto !important;
+}
+
+#navigation-bar ul li{
+    padding-left:30px;
+}
+
+.main-boxshadow {
+    border-radius:5px;
+    padding-top: 10px !important;
+    -webkit-box-shadow: 9px 9px 8px 1px rgba(196,184,196,0.8) !important;
+    -moz-box-shadow: 9px 9px 8px 1px rgba(196,184,196,0.8) !important;
+    box-shadow: 9px 9px 8px 1px rgba(196,184,196,0.8) !important;
+}
+
+#mainImage {
+    padding-bottom: 10px !important;
+    background-color: white !important;
+}
+
+#sorry-background {
+    background-image: url("../images/Sculls/scull_wings.jpg") !important;
+    background-repeat:no-repeat;
+    height: auto;
+    color: whitesmoke;
+    background-color:black;
+    text-align:center;
+    background-position-x:center;
+    padding-top:170px!important;
+    border-radius:5px;
+}
+
+#sorry-background h1 {
+    font-size:42px;
+}
+
+#footer{
+    margin-top:30px!important;
+}
+
+
+
+
+
+
+

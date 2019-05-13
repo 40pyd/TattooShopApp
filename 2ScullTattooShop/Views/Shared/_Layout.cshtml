@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewData["Title"] - _2ScullTattooShop</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="keywords" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/css/owl.theme.css" rel="stylesheet">
+    <link href="~/css/tatto.css" rel="stylesheet">
+    <link href="~/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+    <script src="~/js/respond.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <div id="top">
+        <div class="container">
+            <div class="col-md-4 offer" data-animate="fadeInDown">
+            </div>
+            <div id="navigation-bar" class="col-md-8" data-animate="fadeInDown">
+                <ul class="menu" style="font-size:30px;">
+                    <li>
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-default yamm main-boxshadow" role="navigation" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand home" data-animate-hover="bounce">
+                    <img class="img img-circle img-responsive" src="~/images/Logos/ornament.jpg" />
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <a class="btn btn-default navbar-toggle" asp-controller="Cart" asp-action="Index" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navigation">
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="dropdown yamm-fw">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Shop<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5>All categories</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="">To shop</a>
+                                                </li>
+                                            </ul>
+                                            <h5>Featured</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Bikers features">Bikers features</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Tattoo stuff">Tattoo stuff</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Shoes</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Trainers">Trainers</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Sandals">Sandals</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hiking shoes">Hiking shoes</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Casual">Casual</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Accessories</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hats">Hats</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Glasses">Glasses</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Belts">Belts</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Braslets">Braslets</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Clothing</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="T-Shirts">T-Shirts</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Shirts">Shirts</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Pants">Pants</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Accessories">Accessories</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown yamm-fw">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Tattoos <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5>Tattoos</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos">All tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Traditional">Traditional tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Realism">Realism tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="WaterColor">WaterColor tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Tribal">Tribal tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="New School">New School tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Neotraditional">Neotraditional tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Japanese">Japanese tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="BlackWork">BlackWork tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Illustrative">Illustrative tattoos</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Tattoos" asp-route-style="Chicano Style">Chicano tattoos</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="banner main-boxshadow">
+                                                <a asp-area="" asp-controller="Styles" asp-action="List">
+                                                    <img src="~/images/Tattoo stuff/images.jpg" class="img img-responsive center-block" alt="">
+                                                </a>
+                                            </div>
+                                            <br />
+                                            <div class="banner main-boxshadow">
+                                                <a asp-area="" asp-controller="Styles" asp-action="List">
+                                                    <img src="~/images/Tattoo stuff/girl.jpg" class="img img-responsive center-block" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Styles</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Styles" asp-route-id="1">All styles</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="1">Traditional</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="2">Realism</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="3">WaterColor</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="4">Tribal</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="5">New School</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="6">Neotraditional</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="7">Japanese</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="8">BlackWork</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="9">Illustrative</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Styles" asp-route-id="100">Chicano</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="banner main-boxshadow">
+                                                <a asp-area="" asp-controller="Authors" asp-action="List">
+                                                    <img src="~/images/Tattoo stuff/Без названия.jpg" class="img img-responsive center-block" alt="">
+                                                </a>
+                                            </div>
+                                            <br />
+                                            <div class="banner main-boxshadow">
+                                                <a asp-area="" asp-controller="Authors" asp-action="List">
+                                                    <img src="~/images/Tattoo stuff/Без названия1.jpg" class="img img-responsive center-block" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Authors</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-action="List" asp-controller="Authors" asp-route-id="1">All authors</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Authors" asp-route-id="1">Pica</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Authors" asp-route-id="2">Boroda</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Authors" asp-route-id="3">Micho</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Authors" asp-route-id="4">Salo</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5>Shop</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-controller="Home" asp-action="Index">Homepage</a>
+                                                <li>
+                                                    <a asp-controller="Products" asp-action="List">All products</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-controller="Tattoos" asp-action="List">All tattoos</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>User</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="">Register</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Manage" asp-action="ChangePassword">Change Password</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Order process</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Cart" asp-action="Index" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">Your shoping cart</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Pages and blog</h5>
+                                            <ul>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Home" asp-action="ApiInfo">Api</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="" asp-controller="Home" asp-action="Error">404</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-controller="Home" asp-action="Contact">Contact</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="active">
+                        <a asp-area="" asp-controller="Home" asp-action="ApiInfo">API</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="navbar-buttons">
+                <div class="navbar-collapse collapse right" id="basket-overview">
+                    @await Component.InvokeAsync("BasketTotal")
+                </div>
+
+                <div class="navbar-collapse collapse right" id="search-not-mobile">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="collapse clearfix" id="search">
+
+                <form asp-action="List" asp-controller="Products" class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input name="SearchString" type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+        <div id="footer" data-animate="fadeInUp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Pages</h4>
+                        <ul>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">Homepage</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <h4>User section</h4>
+                        <ul>
+                            <li>
+                                <a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="">Register</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Manage" asp-action="ChangePassword">Change Password</a>
+                            </li>
+                        </ul>
+                        <hr class="hidden-md hidden-lg hidden-sm">
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Top categories</h4>
+                        <h5>Clothes</h5>
+                        <ul>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hats">Hats</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Trainers">Trainers</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hiking Shoes">Hiking Shoes</a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <h5>Accessories</h5>
+                        <ul>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Glasses">Glasses</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Belts">Belts</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Pants">Pants</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Braslets">Braslets</a>
+                            </li>
+                        </ul>
+                        <hr class="hidden-md hidden-lg">
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Where to find us</h4>
+                        <p>
+                            <strong>2ScullTattooShop Ltd.</strong>
+                            <br>Brovary
+                            <br>New Podvalna str.
+                            <br>Podval 14
+                            <br>Ukraine
+                            <br>
+                            <strong>Europe</strong>
+                        </p>
+                        <h4>
+                            <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </h4>
+                        <hr class="hidden-md hidden-lg">
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Get answers</h4>
+                        <p>All usual question about the tattoo and the process of tattoo are answered on FAQ page</p>
+                        <h4>
+                            <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
+                        </h4>
+                        <h4>
+                            <a asp-area="" asp-controller="Home" asp-action="ApiInfo">API</a>
+                        </h4>
+                        <hr />
+
+                        <h4>Stay in touch</h4>
+                        <p class="social">
+                            <a href="https://uk-ua.facebook.com" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=ru" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                            <a href="https://plus.google.com/?hl=ru" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">© 2019 Saryk</p>
+
+                </div>
+            </div>
+        </div>
+
+        <environment include="Development">
+            <script src="~/js/jquery-1.11.0.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/jquery.cookie.js"></script>
+            <script src="~/js/waypoints.min.js"></script>
+            <script src="~/js/modernizr.js"></script>
+            <script src="~/js/owl.carousel.min.js"></script>
+            <script src="~/js/bootstrap-hover-dropdown.js"></script>
+            <script src="~/js/front.js"></script>
+            <script src="~/js/site.js"></script>
+            <script src="~/js/jquery.flexslider.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+            </script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+</body>
+</html>

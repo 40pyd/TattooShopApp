@@ -1,0 +1,96 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.ApplicationUsersListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div id="advantages">
+    <div class="container">
+        <div class="same-height-row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="box same-height clickable">
+                    <div class="icon">
+                        <i class="fa fa-align-center"></i>
+                    </div>
+                    <h3><a asp-area="" asp-action="Create">Add new user</a></h3>
+                    <p>Add the user to shop database</p>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+
+<div id="all">
+
+    <div id="content">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row products">
+                    @foreach (var item in Model.Users)
+                    {
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product main-boxshadow">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            @if (@item.Image != null)
+                                            {
+                                                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-circle center-block">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                            }
+                                        </div>
+                                        <div class="back">
+                                            @if (@item.Image != null)
+                                            {
+                                                <a asp-action="Details" asp-route-id="@item.Id">
+                                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-circle center-block">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="invisible">
+                                    @if (@item.Image != null)
+                                    {
+                                        <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Image))" alt="" class="img-responsive">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                    }
+                                </a>
+                                <div class="text text-center">
+                                    <h3><strong><a asp-action="Details" asp-route-id="@item.Id">@item.FirstName @item.LastName</a></strong></h3>
+                                    <p>
+                                        <a class="btn btn-info btn-small" asp-action="Details" asp-route-id="@item.Id">View details</a>
+                                    </p>
+                                    <p class="buttons">
+                                        @if (ViewBag.IsAdmin)
+                                        {
+                                            <a class="btn btn-primary btn-small" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="btn btn-danger btn-small" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div page-model="@Model.PageViewModel" page-action="List" page-classes-enable="true"
+             page-class="btn" page-class-normal="btn-default"
+             page-class-selected="btn-primary" class="btn-group pull-right">
+        </div>
+    </div>
+        </div>
+
