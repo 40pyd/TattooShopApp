@@ -8,13 +8,13 @@ namespace Identity.Services
 {
     public static class ApplicationIdentityDatabaseFactory
     {
-        public static void Seed(ApplicationIdentityContext context,
+        public static void Seed(ApplicationDbContext context,
                          UserManager<ApplicationUser> userManager,
                          RoleManager<ApplicationRole> roleManager,
                          SignInManager<ApplicationUser> _signInManager)
         {
 
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
 
             if (context.Users.Any() || context.Roles.Any())
             {

@@ -1,17 +1,17 @@
 {
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": true,
+    "anonymousAuthentication": false,
     "iisExpress": {
       "applicationUrl": "http://localhost:51880/",
-      "sslPort": 44372
+      "sslPort": 44306
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:44372/",
+      "launchUrl": "https://localhost:44306/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

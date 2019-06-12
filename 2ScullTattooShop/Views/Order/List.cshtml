@@ -1,0 +1,63 @@
+﻿@model _2ScullTattooShop.Models.ViewModels.OrderListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+
+<div id="all">
+
+    <div id="content">
+
+        <div class="container">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8" id="basket">
+
+                <div id="sorry-background" class="box info-bar main-boxshadow text-center" data-animate="fadeInUpBig">
+                    <h2>Orders</h2>
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">Order Id</th>
+                                <th style="text-align: center">Customer</th>
+                                <th style="text-align: center">Created on</th>
+                                <th style="text-align: center">Delivery address</th>
+                                <th style="text-align: center">Total value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Orders)
+                            {
+                                <tr>
+                                    <td class="text-center">@item.OrderId</td>
+                                    <td class="text-center">@item.CustomerName</td>
+                                    <td class="text-center">@item.CreatedOn.DateTime.ToShortDateString()</td>
+                                    <td class="text-center">@item.AddressLine</td>
+                                    <td class="text-center">@item.TotalValue.ToString() $</td>
+                                    <td class="text-center">
+                                        <form asp-action="Delete" method="post">
+                                            <input type="hidden" name="Id" value="@item.OrderId" />
+                                            <button type="submit" class="btn btn-xs btn-info">Confirm</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div>
+                        <div page-model="@Model.PageViewModel" page-action="List" page-classes-enable="true"
+                             page-class="btn" page-class-normal="btn-default"
+                             page-class-selected="btn-primary" 
+                             class="btn-group pull-right">
+                        </div>
+                        <a class="btn btn-primary" asp-action="Index" asp-controller="Home">Home</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+            </div>
+    </div>
+
+

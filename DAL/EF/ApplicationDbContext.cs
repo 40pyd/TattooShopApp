@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Identity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;

@@ -35,17 +35,17 @@ namespace _2ScullTattooShop
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<DAL.EF.ApplicationDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DataConnection"),b => b.MigrationsAssembly("DAL")));
-            services.AddDbContext<ApplicationIdentityContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("IdentityDataConnection")));
+            services.AddDbContext<Identity.EF.ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DataConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationIdentityContext>()
+                .AddEntityFrameworkStores<Identity.EF.ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
-                AddCookie(options => options.SlidingExpiration=true).
+                AddCookie(options => options.SlidingExpiration = true).
                 AddJwtBearer(options =>
                 {
                     options.RequireHttpsMetadata = false;
@@ -83,7 +83,7 @@ namespace _2ScullTattooShop
             services.AddTransient<IGenericRepository<Address>, AddressRepository>();
             services.AddTransient<IGenericRepository<Order>, OrderRepository>();
 
-            services.AddScoped<Basket>(sp => SessionBasket.GetBasket(sp));
+            services.AddScoped(sp => SessionBasket.GetBasket(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc();
@@ -105,17 +105,17 @@ namespace _2ScullTattooShop
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            
             app.UseStaticFiles();
 
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            var context = serviceProvider.GetRequiredService<ApplicationIdentityContext>();
+            var context = serviceProvider.GetRequiredService<Identity.EF.ApplicationDbContext>();
             var signManager = serviceProvider.GetRequiredService<SignInManager<ApplicationUser>>();
 
             // Use to create entity database and seed data
-            ApplicationIdentityDatabaseFactory.Seed(context, userManager, roleManager, signManager);
-
+            //ApplicationIdentityDatabaseFactory.Seed(context, userManager, roleManager, signManager);
+            
             app.UseAuthentication();
             app.UseSession();
             app.UseMvc(routes =>

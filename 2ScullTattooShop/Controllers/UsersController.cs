@@ -13,13 +13,13 @@ namespace _2ScullTattooShop.Controllers
     [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
-        ApplicationIdentityContext context;
+        ApplicationDbContext context;
         UserManager<ApplicationUser> userManager;
         SignInManager<ApplicationUser> signInManager;
 
         public int PageSize = 6;
 
-        public UsersController(ApplicationIdentityContext _context,
+        public UsersController(ApplicationDbContext _context,
                                UserManager<ApplicationUser> _userManager,
                                SignInManager<ApplicationUser> _signInManager)
         {

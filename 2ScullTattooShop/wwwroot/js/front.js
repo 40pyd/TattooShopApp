@@ -170,7 +170,7 @@ function carousels() {
 function animations() {
     delayTime = 0;
     $('[data-animate]').css({opacity: '0'});
-    $('[data-animate]').waypoint(function(direction) {
+    $('[data-animate]').waypoint(function() {
 	delayTime += 150;
 	$(this).delay(delayTime).queue(function(next) {
 	    $(this).toggleClass('animated');

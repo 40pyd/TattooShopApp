@@ -7,6 +7,7 @@ using BLL.Models;
 using BLL.Services.Interfaces;
 using Identity.EF;
 using Identity.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,7 +16,7 @@ namespace _2ScullTattooShop.Controllers
 {
     public class OrderController : Controller
     {
-        ApplicationIdentityContext context;
+        ApplicationDbContext context;
         UserManager<ApplicationUser> userManager;
         SignInManager<ApplicationUser> signInManager;
         private IService<OrderDTO> orderService;
@@ -24,10 +25,12 @@ namespace _2ScullTattooShop.Controllers
         private IConfiguration configuration;
         private IEmailSender emailSender;
 
+        public int PageSize { get; set; } = 10;
+
         public OrderController(IService<OrderDTO> _orderService,
                                IService<AddressDTO> _addressService,
                                Basket _basket,
-                               ApplicationIdentityContext _context,
+                               ApplicationDbContext _context,
                                UserManager<ApplicationUser> _userManager,
                                SignInManager<ApplicationUser> _signInManager,
                                IConfiguration _configuration,
@@ -41,6 +44,45 @@ namespace _2ScullTattooShop.Controllers
             signInManager = _signInManager;
             configuration = _configuration;
             emailSender = _emailSender;
+        }
+
+        public ActionResult List(int page = 1)
+        {
+            var orders = orderService.GetAll().ToList();
+            for(int i=0; i< orders.Count(); i++)
+            {
+                try
+                {
+                    orders[i].CustomerName = userManager.Users.Where(u => u.Id == orders[i].CustomerId).FirstOrDefault().FirstName;
+                }
+                catch
+                {
+                    orders[i].CustomerName = "unknown";
+                }
+            }
+            return View(new OrderListViewModel
+            {
+                Orders = orders
+                    .OrderBy(c => c.OrderId)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
+                PageViewModel = new PageViewModel
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = orders.Count()
+                }
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var order = orderService.Get(id);
+            orderService.Delete(order);
+            orderService.Save();
+            return RedirectToAction(nameof(List));
         }
 
         public IActionResult Checkout()

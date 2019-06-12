@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-_2ScullTattooShop-21CAED60-9587-46A3-B860-3D971EDC208F</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />

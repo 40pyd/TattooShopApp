@@ -44,6 +44,7 @@ namespace BLL.Services.Concrete
 
                 orderViewModel.OrderId = order.OrderId;
                 orderViewModel.CustomerId = order.CustomerId;
+                orderViewModel.CreatedOn = order.CreatedOn;
                 orderViewModel.AddressId = order.AddressId;
                 orderViewModel.AddressLine = order.Address?.AddressLine;
                 orderViewModel.TotalValue = order.TotalValue;
@@ -59,6 +60,7 @@ namespace BLL.Services.Concrete
                               {
                                   OrderId = x.OrderId,
                                   CustomerId = x.CustomerId,
+                                  CreatedOn=x.CreatedOn,
                                   AddressId = x.AddressId,
                                   AddressLine = x.Address.AddressLine,
                                   TotalValue = x.TotalValue
