@@ -8,5 +8,8 @@ namespace _2ScullTattooShop.Models.ViewModels
 
         [Required(ErrorMessage = "Country name is required")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Country short name is required")]
+        public string ShortName { get; set; }
     }
 }

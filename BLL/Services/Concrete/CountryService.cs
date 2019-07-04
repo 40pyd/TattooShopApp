@@ -23,7 +23,8 @@ namespace BLL.Services.Concrete
             Country newCountry = new Country
             {
                 CountryId = countryViewModel.CountryId,
-                Name = countryViewModel.Name
+                Name = countryViewModel.Name,
+                ShortName = countryViewModel.ShortName
             };
             repo.Add(newCountry);
         }
@@ -40,7 +41,8 @@ namespace BLL.Services.Concrete
             CountryDTO countryViewModel = new CountryDTO
             {
                 CountryId = country.CountryId,
-                Name = country.Name
+                Name = country.Name,
+                ShortName = country.ShortName
             };
             return countryViewModel;
         }
@@ -52,7 +54,8 @@ namespace BLL.Services.Concrete
                           .Select(x => new CountryDTO
                           {
                               CountryId = x.CountryId,
-                              Name = x.Name
+                              Name = x.Name,
+                              ShortName = x.ShortName
                           });
         }
 
@@ -68,6 +71,7 @@ namespace BLL.Services.Concrete
             {
                 newCountry.CountryId = countryViewModel.CountryId;
                 newCountry.Name = countryViewModel.Name;
+                newCountry.ShortName = countryViewModel.ShortName;
             }
             repo.Save();
         }

@@ -1,0 +1,80 @@
+﻿@model _ScullTattooShop.Models.ViewModels.CountryListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+
+@if (ViewBag.IsAdmin)
+{
+    <div id="advantages">
+        <div class="container">
+            <div class="same-height-row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="box same-height clickable">
+                        <div class="icon">
+                            <i class="fa fa-indent"></i>
+                        </div>
+                        <h3><a asp-area="" asp-action="Create">Add new country</a></h3>
+                        <p>Countries are used to describe product delivery information</p>
+                    </div>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </div>
+}
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <div class="row products">
+                        @foreach (var item in Model.Countries)
+                        {
+                            <div class="col-md-2 col-sm-4">
+                                <div class="product main-boxshadow" data-animate="fadeInUp">
+                                    <div class="flip-container">
+                                        <div class="flipper">
+                                            <div class="front">
+                                                <img style="background-color:dimgrey" src="https://www.countryflags.io/@item.ShortName/flat/64.png" alt="" class="img-thumbnail center-block">
+
+                                            </div>
+                                            <div class="back">
+                                                <img src="https://www.countryflags.io/@item.ShortName/flat/64.png" alt="" class="img-thumbnail center-block">
+
+                                            </div>
+                                            <br /><br />
+                                        </div>
+                                    </div>
+                                    <a class="invisible">
+                                        <img ssrc="https://www.countryflags.io/@item.ShortName/flat/64.png" alt="" class="img">
+
+                                    </a>
+                                    <div class="text">
+                                        <h3><strong><a asp-action="Details" asp-route-id="@item.CountryId">@item.Name</a></strong></h3>
+
+                                        <p class="buttons">
+                                            @if (ViewBag.IsAdmin)
+                                            {
+                                                <a class="btn btn-primary btn-small" asp-action="Edit" asp-route-id="@item.CountryId">Edit</a>
+                                                <a class="btn btn-danger btn-small" asp-action="Delete" asp-route-id="@item.CountryId">Delete</a>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div page-model="@Model.PageViewModel" page-action="List" page-classes-enable="true"
+                 page-class="btn" page-class-normal="btn-default"
+                 page-class-selected="btn-primary" class="btn-group pull-right">
+            </div>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-lg btn-group-vertical" style="font-size: 32px"><i class="fa fa-home"></i>Back</a>
+        </div>
+    </div>
