@@ -1,4 +1,26 @@
 ﻿$(document).ready(function () {
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chat").build();
+    connectin.on("SendMessage", (user, message) => {
+        const msg = message.replace(/&/g, "&amp").replace(/</g, "&alt").replace(/>/g, "&gt;");
+        const encoding = user + ": " + message;
+        var li = document.createElement("li");
+        li.textContent = encoding;
+        document.getElementById("messageList").appendChild(li);
+    });
+
+    connection.start().catch(error => console.log(error.toString()));
+
+    document.getElementById("chatSendButton").addEventListener("click", event => {
+        const user = document.getElementById("userInput").value;
+        const message = document.getElementById("messageInput").value;
+
+        connection.invoke("SendMessage", user, message).catch(error => console.log(error.toString()));
+        event.preventDefault();
+    });
+
+
+
     GetMap();
 });
 
@@ -25,3 +47,11 @@ function GetMap() {
 
     marker.setIcon('https://maps.google.com/mapfiles/ms/icons/red-dot.png')
 }
+
+//function openForm() {
+//    document.getElementById("chat").style.display = "block";
+//}
+
+//function closeForm() {
+//    document.getElementById("chat").style.display = "none";
+//}

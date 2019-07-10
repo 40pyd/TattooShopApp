@@ -21,6 +21,7 @@ using _2ScullTattooShop.Models.BasketModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using _2ScullTattooShop.Hubs;
 
 namespace _2ScullTattooShop
 {
@@ -87,6 +88,12 @@ namespace _2ScullTattooShop
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc();
+            services.AddCors(options=>options.AddPolicy("CorsPolicy", builder=> {
+                builder.AllowAnyMethod().AllowAnyHeader().
+                    WithOrigins("https://localhost:44306/chat").
+                    AllowCredentials();
+            }));
+            services.AddSignalR();
             services.AddMemoryCache();
             services.AddSession();
         }
@@ -114,10 +121,16 @@ namespace _2ScullTattooShop
             var signManager = serviceProvider.GetRequiredService<SignInManager<ApplicationUser>>();
 
             // Use to create entity database and seed data
-            //ApplicationIdentityDatabaseFactory.Seed(context, userManager, roleManager, signManager);
+            // ApplicationIdentityDatabaseFactory.Seed(context, userManager, roleManager, signManager);
             
             app.UseAuthentication();
             app.UseSession();
+            app.UseCookiePolicy();
+            app.UseCors("CorsPolicy");
+            app.UseSignalR(route=> 
+            {
+                route.MapHub<ChatHub>("/chat");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

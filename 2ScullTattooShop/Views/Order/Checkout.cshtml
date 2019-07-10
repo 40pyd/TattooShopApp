@@ -20,6 +20,13 @@
                             <span asp-validation-for="AddressLine" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label class="control-label">
+                                Country
+                            </label>
+                            <select asp-for="CountryId" class="form-control" asp-items="ViewBag.Countries"></select>
+                            <span asp-validation-for="CountryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <input type="submit" value="Create" class="btn btn-success" />
                             <a class="btn btn-primary" asp-action="Index" asp-controller="Cart">Back</a>
                         </div>

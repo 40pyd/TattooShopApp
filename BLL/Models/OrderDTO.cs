@@ -9,6 +9,7 @@ namespace BLL.Models
         public string CustomerId { get; set; }
         public string CustomerName { get; set; }
         public int? AddressId { get; set; }
+        public int? CountryId { get; set; }
         public string AddressLine { get; set; }
         public int TotalValue { get; set; }
     }

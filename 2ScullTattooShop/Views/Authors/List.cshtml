@@ -43,12 +43,12 @@
                                                 <a asp-action="Details" asp-route-id="@item.AuthorId">
                                                     <img src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Photo))" alt="" class="img-circle center-block">
                                                 </a>
-                                             }
-                                             else
-                                             {
-                                                 <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
-                                             }
-                                            </div>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/Tattoos/scull_temp.jpg" alt="" class="img-responsive center-block">
+                                            }
+                                        </div>
                                         <div class="back">
                                             @if (@item.Photo != null)
                                             {
@@ -98,4 +98,7 @@
              page-class-selected="btn-primary" class="btn-group pull-right">
         </div>
     </div>
+</div>
+<div class="col-md-12 text-center" data-animate="fadeInUpBig">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="font-size: 32px"><i class="fa fa-home"></i>Homepage</a>
 </div>

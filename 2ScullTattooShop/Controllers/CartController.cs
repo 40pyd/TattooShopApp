@@ -183,7 +183,6 @@ namespace _2ScullTattooShop.Controllers
                     return RedirectToAction(nameof(CreateAddress));
                 }
             }
-            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "CountryId", "Name");
             return View(_address);
         }
 

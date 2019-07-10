@@ -144,8 +144,6 @@ namespace _2ScullTattooShop.Controllers
                     return RedirectToAction(nameof(List));
                 }
             }
-            ViewData["StyleId"] = new SelectList(styleService.GetAll(), "Id", "Name", _tattoo.StyleId);
-            ViewData["AuthorId"] = new SelectList(authorService.GetAll(), "AuthorId", "Name", _tattoo.AuthorId);
             return View(_tattoo);
         }
 
@@ -201,8 +199,6 @@ namespace _2ScullTattooShop.Controllers
                 }
                 return RedirectToAction(nameof(List));
             }
-            ViewData["StyleId"] = new SelectList(styleService.GetAll(), "Id", "Id", _tattoo.StyleId);
-            ViewData["AuthorId"] = new SelectList(authorService.GetAll(), "Id", "Id", _tattoo.AuthorId);
             return View(_tattoo);
         }
 

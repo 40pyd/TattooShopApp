@@ -53,6 +53,13 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#chat">
+                        <span class="sr-only">toggle chat</span>
+                        <i class="fa fa-group"></i>
+                    </button>
+
+
+
                     <a class="btn btn-default navbar-toggle" asp-controller="Cart" asp-action="Index" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs"></span>
                     </a>
@@ -368,6 +375,12 @@
                     </button>
                 </div>
 
+                <div class="navbar-collapse collapse right">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#chat">
+                        <span class="sr-only">Chat</span>
+                        <i class="fa fa-group"></i> Chat
+                    </button>
+                </div>
             </div>
 
             <div class="collapse clearfix" id="search">
@@ -381,155 +394,174 @@
                     </div>
                 </form>
             </div>
+
+            
         </div>
-    </div>
+
+
+
+        </div>
 
     <div class="container">
+        <div class="box main-boxshadow collapse clearfix chat" id="chat">
+                <form class="form-container">
+                    <label><b>User</b></label>
+                    <input type="text" id="userInput" />
+                    <textarea placeholder="Type message.." name="msg" id="messageInput" required></textarea>
+
+                    <button type="submit" class="btn btn-primary" id="chatSendButton">Send</button>
+                </form>
+                <div class="row" >
+                    <ul id="messageList">
+                    </ul>
+                </div>
+                    </div>
         @RenderBody()
     </div>
 
-        <div id="footer" data-animate="fadeInUp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
-                        <ul>
-                            <li>
-                                <a asp-area="" asp-controller="Home" asp-action="Index">Homepage</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
-                            </li>
-                        </ul>
-                        <hr>
-                        <h4>User section</h4>
-                        <ul>
-                            <li>
-                                <a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="">Register</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Manage" asp-action="ChangePassword">Change Password</a>
-                            </li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg hidden-sm">
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Top categories</h4>
-                        <h5>Clothes</h5>
-                        <ul>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hats">Hats</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Trainers">Trainers</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hiking Shoes">Hiking Shoes</a>
-                            </li>
-                        </ul>
-                        <hr>
-                        <h5>Accessories</h5>
-                        <ul>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Glasses">Glasses</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Belts">Belts</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Pants">Pants</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Braslets">Braslets</a>
-                            </li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Where to find us</h4>
-                        <p>
-                            <strong>2ScullTattooShop Ltd.</strong>
-                            <br>Brovary
-                            <br>New Podvalna str.
-                            <br>Podval 14
-                            <br>Ukraine
-                            <br>
-                            <strong>Europe</strong>
-                        </p>
-                        <h4>
+    <div id="footer" data-animate="fadeInUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Homepage</a>
+                        </li>
+                        <li>
                             <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                        </h4>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Get answers</h4>
-                        <p>All usual question about the tattoo and the process of tattoo are answered on FAQ page</p>
-                        <h4>
+                        </li>
+                        <li>
                             <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
-                        </h4>
-                        <h4>
-                            <a asp-area="" asp-controller="Home" asp-action="ApiInfo">API</a>
-                        </h4>
-                        <hr />
+                        </li>
+                    </ul>
+                    <hr>
+                    <h4>User section</h4>
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="">Register</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Manage" asp-action="ChangePassword">Change Password</a>
+                        </li>
+                    </ul>
+                    <hr class="hidden-md hidden-lg hidden-sm">
+                </div>
 
-                        <h4>Stay in touch</h4>
-                        <p class="social">
-                            <a href="https://uk-ua.facebook.com" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/?lang=ru" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.instagram.com" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="https://plus.google.com/?hl=ru" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                        </p>
-                    </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>Top categories</h4>
+                    <h5>Clothes</h5>
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hats">Hats</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Trainers">Trainers</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Hiking Shoes">Hiking Shoes</a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <h5>Accessories</h5>
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Glasses">Glasses</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Belts">Belts</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Pants">Pants</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Products" asp-action="List" asp-route-category="Braslets">Braslets</a>
+                        </li>
+                    </ul>
+                    <hr class="hidden-md hidden-lg">
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Where to find us</h4>
+                    <p>
+                        <strong>2ScullTattooShop Ltd.</strong>
+                        <br>Brovary
+                        <br>New Podvalna str.
+                        <br>Podval 14
+                        <br>Ukraine
+                        <br>
+                        <strong>Europe</strong>
+                    </p>
+                    <h4>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                    </h4>
+                    <hr class="hidden-md hidden-lg">
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Get answers</h4>
+                    <p>All usual question about the tattoo and the process of tattoo are answered on FAQ page</p>
+                    <h4>
+                        <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
+                    </h4>
+                    <h4>
+                        <a asp-area="" asp-controller="Home" asp-action="ApiInfo">API</a>
+                    </h4>
+                    <hr />
+
+                    <h4>Stay in touch</h4>
+                    <p class="social">
+                        <a href="https://uk-ua.facebook.com" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/?lang=ru" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.instagram.com" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                        <a href="https://plus.google.com/?hl=ru" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+                    </p>
                 </div>
             </div>
         </div>
-        <div id="copyright">
-            <div class="container">
-                <div class="col-md-12">
-                    <p class="pull-left">© 2019 Saryk</p>
+    </div>
+    <div id="copyright">
+        <div class="container">
+            <div class="col-md-12">
+                <p class="pull-left">© 2019 Saryk</p>
 
-                </div>
             </div>
         </div>
+    </div>
 
-        <environment include="Development">
-            <script src="~/js/jquery-1.11.0.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/jquery.cookie.js"></script>
-            <script src="~/js/waypoints.min.js"></script>
-            <script src="~/js/modernizr.js"></script>
-            <script src="~/js/owl.carousel.min.js"></script>
-            <script src="~/js/bootstrap-hover-dropdown.js"></script>
-            <script src="~/js/front.js"></script>
-            <script src="~/js/site.js"></script>
-            <script src="~/js/jquery.flexslider.js"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="~/js/jquery-1.11.0.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/jquery.cookie.js"></script>
-            <script src="~/js/waypoints.min.js"></script>
-            <script src="~/js/modernizr.js"></script>
-            <script src="~/js/owl.carousel.min.js"></script>
-            <script src="~/js/bootstrap-hover-dropdown.js"></script>
-            <script src="~/js/front.js"></script>
-            <script src="~/js/site.js"></script>
-            <script src="~/js/jquery.flexslider.js"></script>
-        
-        </environment>
+    <environment include="Development">
+        <script src="~/js/jquery-1.11.0.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/jquery.cookie.js"></script>
+        <script src="~/js/waypoints.min.js"></script>
+        <script src="~/js/modernizr.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/bootstrap-hover-dropdown.js"></script>
+        <script src="~/js/front.js"></script>
+        <script src="~/lib/signalr/signalr.js"></script>
+        <script src="~/js/site.js"></script>
+        <script src="~/js/jquery.flexslider.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/jquery-1.11.0.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/jquery.cookie.js"></script>
+        <script src="~/js/waypoints.min.js"></script>
+        <script src="~/js/modernizr.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/bootstrap-hover-dropdown.js"></script>
+        <script src="~/js/front.js"></script>
+        <script src="~/js/site.js"></script>
+        <script src="~/js/jquery.flexslider.js"></script>
 
-        @RenderSection("Scripts", required: false)
+    </environment>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

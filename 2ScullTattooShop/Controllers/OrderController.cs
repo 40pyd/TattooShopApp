@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using _2ScullTattooShop.Models.BasketModels;
 using _2ScullTattooShop.Models.ViewModels;
@@ -10,6 +11,7 @@ using Identity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 
 namespace _2ScullTattooShop.Controllers
@@ -21,6 +23,7 @@ namespace _2ScullTattooShop.Controllers
         SignInManager<ApplicationUser> signInManager;
         private IService<OrderDTO> orderService;
         private IService<AddressDTO> addressService;
+        private IService<CountryDTO> countriesService;
         private Basket basket;
         private IConfiguration configuration;
         private IEmailSender emailSender;
@@ -29,6 +32,7 @@ namespace _2ScullTattooShop.Controllers
 
         public OrderController(IService<OrderDTO> _orderService,
                                IService<AddressDTO> _addressService,
+                               IService<CountryDTO> _countriesService,
                                Basket _basket,
                                ApplicationDbContext _context,
                                UserManager<ApplicationUser> _userManager,
@@ -38,6 +42,7 @@ namespace _2ScullTattooShop.Controllers
         {
             orderService = _orderService;
             addressService = _addressService;
+            countriesService = _countriesService;
             basket = _basket;
             context = _context;
             userManager = _userManager;
@@ -87,6 +92,8 @@ namespace _2ScullTattooShop.Controllers
 
         public IActionResult Checkout()
         {
+            ViewData["Countries"] = new SelectList(countriesService.GetAll(), "CountryId", "Name");
+
             return View(new OrderViewModel());
         }
 
@@ -109,6 +116,7 @@ namespace _2ScullTattooShop.Controllers
                     CustomerId = userManager.GetUserId(HttpContext.User),
                     CustomerName = this.User.FindFirstValue(ClaimTypes.Name),
                     AddressLine = _order.AddressLine,
+                    CountryId = _order.CountryId,
                     TotalValue = (int)basket.ComputeTotalValue()
                 };
                 if (addressService.GetAll().Where(x => x.AddressLine == _order.AddressLine).Count() > 0)

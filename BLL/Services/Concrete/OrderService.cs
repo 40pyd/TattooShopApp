@@ -25,6 +25,7 @@ namespace BLL.Services.Concrete
                 OrderId = orderViewModel.OrderId,
                 CustomerId = orderViewModel.CustomerId,
                 AddressId = orderViewModel.AddressId,
+                CountryId = orderViewModel.CountryId,
                 TotalValue = orderViewModel.TotalValue
             };
                 repo.Add(newOrder);
@@ -46,6 +47,7 @@ namespace BLL.Services.Concrete
                 orderViewModel.CustomerId = order.CustomerId;
                 orderViewModel.CreatedOn = order.CreatedOn;
                 orderViewModel.AddressId = order.AddressId;
+                orderViewModel.CountryId = order.CountryId;
                 orderViewModel.AddressLine = order.Address?.AddressLine;
                 orderViewModel.TotalValue = order.TotalValue;
             
@@ -62,6 +64,7 @@ namespace BLL.Services.Concrete
                                   CustomerId = x.CustomerId,
                                   CreatedOn=x.CreatedOn,
                                   AddressId = x.AddressId,
+                                  CountryId = x.CountryId,
                                   AddressLine = x.Address.AddressLine,
                                   TotalValue = x.TotalValue
                               });
@@ -80,6 +83,7 @@ namespace BLL.Services.Concrete
                     newOrder.OrderId = orderViewModel.OrderId;
                     newOrder.CustomerId = orderViewModel.CustomerId;
                     newOrder.AddressId = orderViewModel.AddressId;
+                    newOrder.CountryId = orderViewModel.CountryId;
                     newOrder.TotalValue = orderViewModel.TotalValue;
                 }
                 repo.Save();
