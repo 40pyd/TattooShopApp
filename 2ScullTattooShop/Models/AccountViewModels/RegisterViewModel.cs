@@ -18,6 +18,7 @@ namespace _2ScullTattooShop.Models.AccountViewModels
         
         [Display(Name = "BirthDay")]
         [DataType(DataType.Date)]
+        [Range(typeof(DateTime), "1/1/1966", "1/1/2013")]
         public DateTime BirthDay { get; set; }
 
         [Required]

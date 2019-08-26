@@ -6,7 +6,7 @@ namespace _2ScullTattooShop
     public class AuthOptions
     {
         public const string ISSUER = "2ScullsAuthServer";
-        public const string AUDIENCE = "https://localhost:44372/";
+        public const string AUDIENCE = "https://localhost:44306/";
         const string KEY = "123456789mysupersecretkey";
         public const int LIFETIME = 1;
         public static SymmetricSecurityKey GetSymmetricSecurityKey()

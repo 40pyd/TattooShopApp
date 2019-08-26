@@ -222,6 +222,8 @@ namespace _2ScullTattooShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            if (model.BirthDay > DateTime.Now)
+                model.BirthDay = new DateTime(2000,1,1);
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {

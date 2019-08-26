@@ -88,14 +88,9 @@ namespace _2ScullTattooShop
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc();
-            services.AddCors(options=>options.AddPolicy("CorsPolicy", builder=> {
-                builder.AllowAnyMethod().AllowAnyHeader().
-                    WithOrigins("https://localhost:44306/chat").
-                    AllowCredentials();
-            }));
-            services.AddSignalR();
             services.AddMemoryCache();
             services.AddSession();
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app
@@ -125,12 +120,11 @@ namespace _2ScullTattooShop
             
             app.UseAuthentication();
             app.UseSession();
-            app.UseCookiePolicy();
-            app.UseCors("CorsPolicy");
-            app.UseSignalR(route=> 
-            {
-                route.MapHub<ChatHub>("/chat");
-            });
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                );
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
